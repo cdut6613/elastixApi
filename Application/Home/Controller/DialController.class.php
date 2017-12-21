@@ -184,4 +184,6 @@ class DialController extends BaseController {
         $this->ajaxReturn(array('code'=>200,'msg'=>'系统错误','data'=>$rs));
     }
 
+
+
 }

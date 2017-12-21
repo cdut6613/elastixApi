@@ -59,6 +59,18 @@ class BaseController extends Controller {
         }
     }
 
+    /**
+     * 判断分机状态
+     */
+    public function status($exten=null)
+    {
+        $rs = $this->ami->ExtensionState((int) $exten);
+        if ($rs['Status']==4 || $rs['Status']==-1){
+            $this->ajaxReturn(['code'=>0,'msg'=>'分机状态：'.C('exten_status')[$rs['Status']],'data'=>$rs,'status'=>false]);
+        }else{
+            $this->ajaxReturn(['code'=>0,'msg'=>'分机状态：'.C('exten_status')[$rs['Status']],'data'=>$rs,'status'=>true]);
+        }
+    }
 
 
 }

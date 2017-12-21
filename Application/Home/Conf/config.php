@@ -19,12 +19,12 @@ return array(
     'trunk_name'    => '110/',
     //分机状态
     'exten_status'  => array(
-        -1  => 'Extension not found',
-        0   => 'Idle',
-        1   => 'In Use',
-        2   => 'Busy',
-        4   => 'Unavailable',
-        8   => 'Ringing',
-        16  => 'On Hold',
+        -1  => '不存在',
+        0   => '空闲',
+        1   => '使用中',
+        2   => '忙',
+        4   => '不可用',
+        8   => '振铃中',
+        16  => '保持',
     ),
 );
