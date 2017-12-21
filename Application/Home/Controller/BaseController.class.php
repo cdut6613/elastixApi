@@ -60,16 +60,33 @@ class BaseController extends Controller {
     }
 
     /**
-     * 判断分机状态
+     * 批量查询分机状态
      */
-    public function status($exten=null)
+    public function status($exten='')
     {
-        $rs = $this->ami->ExtensionState((int) $exten);
-        if ($rs['Status']==4 || $rs['Status']==-1){
-            $this->ajaxReturn(['code'=>0,'msg'=>'分机状态：'.C('exten_status')[$rs['Status']],'data'=>$rs,'status'=>false]);
-        }else{
-            $this->ajaxReturn(['code'=>0,'msg'=>'分机状态：'.C('exten_status')[$rs['Status']],'data'=>$rs,'status'=>true]);
+        // 指定允许其他域名访问
+        header('Access-Control-Allow-Origin:*');
+        // 响应类型
+        header('Access-Control-Allow-Methods:POST');
+        // 响应头设置
+        header('Access-Control-Allow-Headers:x-requested-with,content-type');
+
+        if (empty($exten)){
+            $this->ajaxReturn(['code'=>200,'msg'=>'请传入正确的分机号,多个分机用,格开','data'=>'']);
         }
+        $statusData = [];
+        foreach (explode(',',$exten) as $e){
+            $rs = $this->ami->ExtensionState((int) $e);
+            if ($rs['Status']==4 || $rs['Status']==-1){
+                $statusData[$e]=0;
+            }else{
+                $statusData[$e]=1;
+            }
+        }
+        if (!empty($statusData)){
+            $this->ajaxReturn(['code'=>0,'msg'=>'查询分机状态信息成功','data'=>$statusData]);
+        }
+        $this->ajaxReturn(['code'=>200,'msg'=>'请传入正确的分机号','data'=>'']);
     }
 
 

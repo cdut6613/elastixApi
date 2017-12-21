@@ -153,6 +153,13 @@ class DialController extends BaseController {
      */
     public function chanSpy($exten=null,$spyExten=null,$type=1)
     {
+        // 指定允许其他域名访问
+        header('Access-Control-Allow-Origin:*');
+        // 响应类型
+        header('Access-Control-Allow-Methods:POST');
+        // 响应头设置
+        header('Access-Control-Allow-Headers:x-requested-with,content-type');
+
         $this->exten = $exten;
 
         //验证监听分机状态,监听分机必需空闲
@@ -182,6 +189,7 @@ class DialController extends BaseController {
             $this->ajaxReturn(array('code'=>0,'msg'=>'监听连接成功','data'=>$rs));
         }
         $this->ajaxReturn(array('code'=>200,'msg'=>'系统错误','data'=>$rs));
+
     }
 
 
