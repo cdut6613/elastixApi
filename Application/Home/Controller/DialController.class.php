@@ -153,6 +153,7 @@ class DialController extends BaseController {
      */
     public function chanSpy($exten=null,$spyExten=null,$type=1)
     {
+
         // 指定允许其他域名访问
         header('Access-Control-Allow-Origin:*');
         // 响应类型
@@ -165,23 +166,23 @@ class DialController extends BaseController {
         //验证监听分机状态,监听分机必需空闲
         $extenStatus = $this->ami->ExtensionState($this->exten);
         if ($extenStatus['Status']!=0){
-            $this->ajaxReturn(array('code'=>200,'msg'=>C('exten_status')[$extenStatus['Status']],'data'=>I()));
+            $this->ajaxReturn(array('code'=>200,'msg'=>'分机：'.$exten.C('exten_status')[$extenStatus['Status']],'data'=>I()));
         }
-        //验证被监听分机状态,被监听分机必需存在
+        //验证被监听分机状态,被监听分机必需使用中
         $spyExtenStatus = $this->ami->ExtensionState($spyExten);
-        if ($spyExtenStatus['Status']==-1){
-            $this->ajaxReturn(array('code'=>200,'msg'=>C('exten_status')[$spyExtenStatus['Status']],'data'=>I()));
+        if ($spyExtenStatus['Status']!=1){
+            $this->ajaxReturn(array('code'=>200,'msg'=>'分机：'.$spyExten.C('exten_status')[$spyExtenStatus['Status']],'data'=>I()));
         }
 
         switch ($type){
             case 1:
-                $dataExt="sW";break;
+                $dataExt="Ew";break;
             case 2:
-                $dataExt="sB";break;
+                $dataExt="EB";break;
             case 3:
-                $dataExt="s";break;
+                $dataExt="E";break;
             default:
-                $dataExt="sW";break;
+                $dataExt="Ew";break;
         }
         $data = "SIP/".$spyExten.",".$dataExt;
         $rs = $this->ami->Originate("SIP/".$this->exten,$spyExten,'from-internal',1,"ChanSpy",$data,null,$this->exten,null,null,true);

@@ -5,12 +5,13 @@ vendor('guzzle53.vendor.autoload');
 vendor('phpagi.phpagi-asmanager');
 use \GuzzleHttp\Client;
 
-class BaseController extends Controller {
+class ApiController extends Controller {
 
     protected $exten = null;
     protected $phone = null;
     protected $secret = '962540';
     protected $msg = null;
+
     public function __construct()
     {
         parent::__construct();
@@ -76,11 +77,12 @@ class BaseController extends Controller {
         }
         $statusData = [];
         foreach (explode(',',$exten) as $e){
-            if (empty($e)){
-                continue;
-            }
             $rs = $this->ami->ExtensionState((int) $e);
-            $statusData[$e]=$rs['Status'];
+            if ($rs['Status']==4 || $rs['Status']==-1){
+                $statusData[$e]=0;
+            }else{
+                $statusData[$e]=1;
+            }
         }
         if (!empty($statusData)){
             $this->ajaxReturn(['code'=>0,'msg'=>'查询分机状态信息成功','data'=>$statusData]);
