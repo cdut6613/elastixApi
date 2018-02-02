@@ -126,6 +126,13 @@ class DialController extends BaseController {
      */
     public function hangup($exten=null)
     {
+        // 指定允许其他域名访问
+        header('Access-Control-Allow-Origin:*');
+        // 响应类型
+        header('Access-Control-Allow-Methods:POST');
+        // 响应头设置
+        header('Access-Control-Allow-Headers:x-requested-with,content-type');
+
         $this->exten = $exten;
         if ($data=$this->getChannel()){
             $rs = $this->ami->Command("hangup request ".$data);

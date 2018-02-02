@@ -1,0 +1,26 @@
+[ 2018-01-04T09:29:58+08:00 ] 172.16.2.203 /tp32/index.php/Home/dial/getCdr
+ERR: {"data":{"zuid":"5a4d836c05040","uniqueid":"1515029338.9","starttime":"2018-01-04 09:29:05","dialingtime":"2018-01-04 09:29:05","calltime":"2018-01-04 09:29:05","endtime":"2018-01-04 09:29:16","src":"18908221080","dst":"1002","record":"QW8K5e%2FH5r6qEjPCA8QXb%2Fnm8YM%2FVyGTnlRK%2By13GvYTtRn%2B3Fg0Ew4G%2FyXXygrxlgWzxb7tWN61Ys6aaT%2BjeA%3D%3D","direct":"1","dialingsec":"4","callsec":"7","durationsec":"11","answered":"2","route":"","cid":"","location":"","limittime":"","uid":""}}
+[ 2018-01-04T09:29:58+08:00 ] 172.16.2.203 /tp32/index.php/Home/dial/getCdr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.012501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.012501s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.010501s ]
+INFO: [ app_end ] --END-- [ RunTime:0.010501s ]
+
+[ 2018-01-04T09:35:53+08:00 ] 172.16.2.203 /tp32/index.php/Home/dial/getCdr
+ERR: {"zuid":"5a4d84cfa8c28","uniqueid":"1515029694.11","starttime":"2018-01-04 09:35:01","dialingtime":"2018-01-04 09:35:01","calltime":"2018-01-04 09:35:01","endtime":"2018-01-04 09:35:11","src":"18908221080","dst":"1002","record":"QW8K5e%2FH5r6qEjPCA8QXb%2Fnm8YM%2FVyGTnlRK%2By13GvYgasSjnVFSYw%2F%2ByPOlRchj8fkLxLMP8YIhxuNvFH%2Blow%3D%3D","direct":"1","dialingsec":"3","callsec":"7","durationsec":"10","answered":"1","route":"","cid":"","location":"","limittime":"","uid":""}
+[ 2018-01-04T09:35:53+08:00 ] 172.16.2.203 /tp32/index.php/Home/dial/getCdr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001501s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001500s ]
+

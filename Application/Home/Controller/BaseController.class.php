@@ -47,10 +47,15 @@ class BaseController extends Controller {
      * @param string $exten 分机号码
      * @return boolean or channel
      */
-    public function getChannel()
+    public function getChannel($exten=null)
     {
+
         $rs = $this->ami->Command("core show channels");
-        $reg = '/SIP\/'.$this->exten.'-\S+\s?/';
+        if ($exten){
+            $reg = '/SIP\/'.$exten.'-\S+\s?/';
+        }else{
+            $reg = '/SIP\/'.$this->exten.'-\S+\s?/';
+        }
         preg_match($reg,$rs['data'],$channel);
         if (empty($channel)){
             return false;
@@ -80,8 +85,26 @@ class BaseController extends Controller {
                 continue;
             }
             $rs = $this->ami->ExtensionState((int) $e);
-            $statusData[$e]=$rs['Status'];
+
+            //通过分机号获取通道，再通过通道去获取uniqueid
+            $channel = $this->getChannel($e);
+            if ($channel){
+                $res = $this->ami->GetVar(trim($channel),"UNIQUEID");
+                if ($res['Response']=='Success'){
+                    $uniqueid=$res['Value'];
+                }else{
+                    $uniqueid="";
+                }
+            }else{
+                $uniqueid="";
+            }
+
+            $statusData[$e] = [
+                "status" =>  $rs['Status'],
+                "uniqueid" => $uniqueid,
+            ];
         }
+
         if (!empty($statusData)){
             $this->ajaxReturn(['code'=>0,'msg'=>'查询分机状态信息成功','data'=>$statusData]);
         }

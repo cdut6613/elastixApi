@@ -1,0 +1,13 @@
+[ 2018-01-03T16:15:21+08:00 ] 172.16.2.203 /tp32/index.php/Home/dial/getCdr
+ERR: {"data":{"calldate":"2018-01-03 16:14:30","src":"18908221080","dst":"s","duration":"9","billsec":"6","disposition":"ANSWERED","recordingfile":"\/var\/spool\/asterisk\/monitor\/2018\/01\/03\/18908221080-s-20180103-161424-1514967264.63.wav","endtime":"1514967279","starttime":"1514967270"}}
+[ 2018-01-03T16:15:21+08:00 ] 172.16.2.203 /tp32/index.php/Home/dial/getCdr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001500s ]
+
